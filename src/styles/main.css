@@ -1,0 +1,57 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#editor {
+  padding: 30px;
+  background: #a2a2a2;
+  background: -webkit-linear-gradient(to bottom, #a2a2a2, #FFFFFF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #a2a2a2, #FFFFFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 5px;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.navbar-inverse {
+  border-radius: 0;
+}
+
+.btn-group textarea {
+  font-size: 12px;
+  font-family: monospace;
+}
+
+.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.direct-link {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.direct-link li {
+  display: inline;
+}
+
+.property-selector, input {
+  font-size: 16px;
+}
+
+.property-selector .checkbox {
+  margin: 5px 0;
+}
+
+
+.property-selector .checkbox input[type=checkbox] {
+  margin-left: 20px;
+}
