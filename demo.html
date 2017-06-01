@@ -50,8 +50,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#editor-code">Editor</a></li>
-            <li><a href="#schema">Schema</a></li>
-            <li><a href="#code">Code</a></li>
+            <li><a href="#schema-block">Schema</a></li>
+            <li><a href="#code-block">Code</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <div class="form-group">
@@ -71,136 +71,136 @@
     </div>
 
     <div class='container'>
-        <div class='row'>
-            <div class='span8 col-md-8 columns eight large-8'>
-                <h2>Editor</h2>
-                <p>Below is the editor generated from the JSON Schema.</p>
+      <div class='row' id="editor-code">
+        <div class='col-md-8'>
+            <h2>Editor</h2>
+            <p>Below is the editor generated from the JSON Schema.</p>
 
-                <div id='editor'></div>
-            </div>
-            <div class='span4 col-md-4 columns four large-4'>
-                <div>
-                    <a href='#' id='direct_link'>Direct Link</a> (preserves schema, value, and options)
-                </div>
-
-                <h2>JSON Output</h2>
-                <p>You can also make changes to the JSON here and set the value in the editor by clicking <button class='btn btn-primary' id='setvalue'>Update Form</button></p>
-                <textarea id='output' style='width: 100%; height: 300px; font-family: monospace;' class='form-control'></textarea>
-
-                <h2>Options</h2>
-                <div id='options_holder'>
-                    <div>
-                        <label>CSS Framework</label>
-                        <select id='theme_switcher' class='form-control'>
-                            <option value='barebones'>Barebones</option>
-                            <option value='html'>HTML</option>
-                            <option value='jqueryui'>jQuery UI</option>
-                            <option value='bootstrap2'>Bootstrap 2</option>
-                            <option value='bootstrap3'>Bootstrap 3</option>
-                            <option value='foundation3'>Foundation 3</option>
-                            <option value='foundation4'>Foundation 4</option>
-                            <option value='foundation5'>Foundation 5</option>
-                            <option value='foundation6'>Foundation 6</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Icon Library</label>
-                        <select id='icon_switcher' class='form-control'>
-                            <option value=''>None</option>
-                            <option value='jqueryui'>jQuery UI</option>
-                            <option value='bootstrap2'>Bootstrap 2 Glyphicons</option>
-                            <option value='bootstrap3'>Bootstrap 3 Glyphicons</option>
-                            <option value='foundation2'>Foundicons 2</option>
-                            <option value='foundation3'>Foundicons 3</option>
-                            <option value='fontawesome3'>FontAwesome 3</option>
-                            <option value='fontawesome4'>FontAwesome 4</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Object Layout</label>
-                        <select id='object_layout' class='form-control'>
-                            <option value='normal'>normal</option>
-                            <option value='grid'>grid</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Show Errors</label>
-                        <select id='show_errors' class='form-control'>
-                            <option value='interaction'>On Interaction</option>
-                            <option value='change'>On Field Change</option>
-                            <option value='always'>Always</option>
-                            <option value='never'>Never</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Boolean options</label>
-                        <select multiple size=9 id='boolean_options' style='width: 100%;' class='form-control'>
-                            <option value='required_by_default'>Object properties required by default</option>
-                            <option value='display_required_only'>Only show required properties by default</option>
-                            <option value='no_additional_properties'>No additional object properties</option>
-                            <option value='ajax'>Allow loading schemas via Ajax</option>
-                            <option value='disable_edit_json'>Disable "Edit JSON" buttons</option>
-                            <option value='disable_collapse'>Disable collapse buttons</option>
-                            <option value='disable_properties'>Disable properties buttons</option>
-                            <option value='disable_array_add'>Disable array add buttons</option>
-                            <option value='disable_array_reorder'>Disable array move buttons</option>
-                            <option value='disable_array_delete'>Disable array delete buttons</option>
-                            <option value='disable_array_delete_all_rows'>Disable array delete all rows buttons</option>
-                            <option value='disable_array_delete_last_row'>Disable array delete last row buttons</option>
-                        </select>
-                    </div>
-                </div>
-
-                <h2>Validation</h2>
-                <p>This will update whenever the form changes to show validation errors if there are any.</p>
-                <textarea id='validate' style='width: 100%; height: 100px; font-family: monospace;' readonly disabled class='form-control'></textarea>
-            </div>
-            <div class='row'>
-                <div class='span12 col-md-12 columns twelve large-12'>
-                    <h2>Schema</h2>
-                    <p>You can change the schema and see how the generated form looks.  After you make changes, click <button class='btn btn-primary' id='setschema'>Update Schema</button></p>
-
-                    <textarea id='schema' style='width: 100%; height: 450px; font-family: monospace;' class='form-control'></textarea>
-                </div>
-            </div>
-            <div class='row'>
-                <div class='span12 col-md-12 columns twelve large-12'>
-                    <h2>Code</h2>
-          <pre><code>// Set default options
-                JSONEditor.defaults.options.theme = 'bootstrap2';
-
-                // Initialize the editor
-                var editor = new JSONEditor(document.getElementById("editor_holder"),{
-                  schema: {
-                      type: "object",
-                      properties: {
-                          name: { "type": "string" }
-                      }
-                  }
-                });
-
-                // Set the value
-                editor.setValue({
-                    name: "John Smith"
-                });
-
-                // Get the value
-                var data = editor.getValue();
-                console.log(data.name); // "John Smith"
-
-                // Validate
-                var errors = editor.validate();
-                if(errors.length) {
-                  // Not valid
-                }
-
-                // Listen for changes
-                editor.on("change",  function() {
-                  // Do something...
-                });</code></pre>
-                </div>
-            </div>
+            <div id='editor'></div>
         </div>
+        <div class='col-md-4'>
+            <div>
+                <a href='#' id='direct_link'>Direct Link</a> (preserves schema, value, and options)
+            </div>
+
+            <h2>JSON Output</h2>
+            <p>You can also make changes to the JSON here and set the value in the editor by clicking <button class='btn btn-primary' id='setvalue'>Update Form</button></p>
+            <textarea id='output' style='width: 100%; height: 300px; font-family: monospace;' class='form-control'></textarea>
+
+            <h2>Options</h2>
+            <div id='options_holder'>
+                <div>
+                    <label>CSS Framework</label>
+                    <select id='theme_switcher' class='form-control'>
+                        <option value='barebones'>Barebones</option>
+                        <option value='html'>HTML</option>
+                        <option value='jqueryui'>jQuery UI</option>
+                        <option value='bootstrap2'>Bootstrap 2</option>
+                        <option value='bootstrap3'>Bootstrap 3</option>
+                        <option value='foundation3'>Foundation 3</option>
+                        <option value='foundation4'>Foundation 4</option>
+                        <option value='foundation5'>Foundation 5</option>
+                        <option value='foundation6'>Foundation 6</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Icon Library</label>
+                    <select id='icon_switcher' class='form-control'>
+                        <option value=''>None</option>
+                        <option value='jqueryui'>jQuery UI</option>
+                        <option value='bootstrap2'>Bootstrap 2 Glyphicons</option>
+                        <option value='bootstrap3'>Bootstrap 3 Glyphicons</option>
+                        <option value='foundation2'>Foundicons 2</option>
+                        <option value='foundation3'>Foundicons 3</option>
+                        <option value='fontawesome3'>FontAwesome 3</option>
+                        <option value='fontawesome4'>FontAwesome 4</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Object Layout</label>
+                    <select id='object_layout' class='form-control'>
+                        <option value='normal'>normal</option>
+                        <option value='grid'>grid</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Show Errors</label>
+                    <select id='show_errors' class='form-control'>
+                        <option value='interaction'>On Interaction</option>
+                        <option value='change'>On Field Change</option>
+                        <option value='always'>Always</option>
+                        <option value='never'>Never</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Boolean options</label>
+                    <select multiple size=9 id='boolean_options' style='width: 100%;' class='form-control'>
+                        <option value='required_by_default'>Object properties required by default</option>
+                        <option value='display_required_only'>Only show required properties by default</option>
+                        <option value='no_additional_properties'>No additional object properties</option>
+                        <option value='ajax'>Allow loading schemas via Ajax</option>
+                        <option value='disable_edit_json'>Disable "Edit JSON" buttons</option>
+                        <option value='disable_collapse'>Disable collapse buttons</option>
+                        <option value='disable_properties'>Disable properties buttons</option>
+                        <option value='disable_array_add'>Disable array add buttons</option>
+                        <option value='disable_array_reorder'>Disable array move buttons</option>
+                        <option value='disable_array_delete'>Disable array delete buttons</option>
+                        <option value='disable_array_delete_all_rows'>Disable array delete all rows buttons</option>
+                        <option value='disable_array_delete_last_row'>Disable array delete last row buttons</option>
+                    </select>
+                </div>
+            </div>
+
+            <h2>Validation</h2>
+            <p>This will update whenever the form changes to show validation errors if there are any.</p>
+            <textarea id='validate' style='width: 100%; height: 100px; font-family: monospace;' readonly disabled class='form-control'></textarea>
+        </div>
+      </div>
+      <div class='row' id="schema-block">
+        <div class='col-md-12'>
+          <h2>Schema</h2>
+          <p>You can change the schema and see how the generated form looks.  After you make changes, click <button class='btn btn-primary' id='setschema'>Update Schema</button></p>
+
+          <textarea id='schema' style='width: 100%; height: 450px; font-family: monospace;' class='form-control'></textarea>
+        </div>
+      </div>
+      <div class='row' id="code-block">
+        <div class='col-md-12'>
+            <h2>Code</h2>
+            <pre><code>// Set default options
+              JSONEditor.defaults.options.theme = 'bootstrap2';
+
+              // Initialize the editor
+              var editor = new JSONEditor(document.getElementById("editor_holder"),{
+                schema: {
+                    type: "object",
+                    properties: {
+                        name: { "type": "string" }
+                    }
+                }
+              });
+
+              // Set the value
+              editor.setValue({
+                  name: "John Smith"
+              });
+
+              // Get the value
+              var data = editor.getValue();
+              console.log(data.name); // "John Smith"
+
+              // Validate
+              var errors = editor.validate();
+              if(errors.length) {
+                // Not valid
+              }
+
+              // Listen for changes
+              editor.on("change",  function() {
+                // Do something...});
+            </code></pre>
+          </div>
+      </div>
     </div>
 
     <script>
