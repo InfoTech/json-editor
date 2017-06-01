@@ -3,49 +3,96 @@
   <head>
     <meta charset="utf-8" />
     <title>Basic JSON Editor Example</title>
+
     <script src="../dist/jsoneditor.js"></script>
+    <!-- Bootstrap3 Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Bootstrap3 Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Bootstrap3 Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
   </head>
   <body>
     <h1>Basic JSON Editor Example</h1>
-    
+
     <div id='editor_holder'></div>
     <button id='submit'>Submit (console.log)</button>
-    
+
     <script>
       // Initialize the editor with a JSON schema
       var editor = new JSONEditor(document.getElementById('editor_holder'),{
         schema: {
-          type: "object",
-          title: "Car",
-          properties: {
-            make: {
-              type: "string",
-              enum: [
-                "Toyota",
-                "BMW",
-                "Honda",
-                "Ford",
-                "Chevy",
-                "VW"
+          "title": "Report",
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "Name of the report",
+              "minLength": 4,
+              "default": "New Info-Tech Report"
+            },
+            "slug": {
+              "type": "string",
+              "minLength": 4,
+              "default": "new_info_tech_report"
+            },
+            "description": {
+              "type": "string",
+              "description": "Description of the report",
+              "minLength": 4,
+              "default": "AMAZING NEW PRODUCT!"
+            },
+            "pages": {
+              "type": "array",
+              "format": "table",
+              "title": "Pages",
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "title": "Page",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "data": {
+                    "type": "array",
+                    "format": "table",
+                    "title": "Data",
+                    "uniqueItems": false,
+                    "items": {
+                      "type": "object",
+                      "title": "Variable",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "Calculation",
+                            "Text"
+                          ],
+                          "default": "Calculation"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "default": [
+                {
+                  "name": "New Page"
+                }
               ]
-            },
-            model: {
-              type: "string"
-            },
-            year: {
-              type: "integer",
-              enum: [
-                1995,1996,1997,1998,1999,
-                2000,2001,2002,2003,2004,
-                2005,2006,2007,2008,2009,
-                2010,2011,2012,2013,2014
-              ],
-              default: 2008
             }
           }
         }
+
       });
-      
+
       // Hook up the submit button to log to the console
       document.getElementById('submit').addEventListener('click',function() {
         // Get the value from the editor
