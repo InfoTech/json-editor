@@ -218,82 +218,72 @@
         // Default starting schema
         if(!schema) {
             schema = {
-                title: "Person",
-                type: "object",
-                properties: {
-                    name: {
-                        type: "string",
-                        description: "First and Last name",
-                        minLength: 4,
-                        default: "Jeremy Dorn"
-                    },
-                    age: {
-                        type: "integer",
-                        default: 25,
-                        minimum: 18,
-                        maximum: 99
-                    },
-                    favorite_color: {
-                        type: "string",
-                        format: "color",
-                        title: "favorite color",
-                        default: "#ffa500"
-                    },
-                    gender: {
-                        type: "string",
-                        enum: ["male", "female"]
-                    },
-                    location: {
-                        type: "object",
-                        title: "Location",
-                        properties: {
-                            city: {
-                                type: "string",
-                                default: "San Francisco"
+              "title": "Report",
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "Name of the report",
+                  "minLength": 4,
+                  "default": "New Info-Tech Report"
+                },
+                "slug": {
+                  "type": "string",
+                  "minLength": 4,
+                  "default": "new_info_tech_report"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Description of the report",
+                  "minLength": 4,
+                  "default": "AMAZING NEW PRODUCT!"
+                },
+                "pages": {
+                  "type": "array",
+                  "format": "table",
+                  "title": "Pages",
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "object",
+                    "title": "Page",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "data": {
+                        "type": "array",
+                        "format": "table",
+                        "title": "Data",
+                        "uniqueItems": false,
+                        "items": {
+                          "type": "object",
+                          "title": "Variable",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "Calculation",
+                                "Text"
+                              ],
+                              "default": "Calculation"
                             },
-                            state: {
-                                type: "string",
-                                default: "CA"
-                            },
-                            citystate: {
-                                type: "string",
-                                description: "This is generated automatically from the previous two fields",
-                                template: "{{city}}, {{state}}",
-                                watch: {
-                                    city: 'location.city',
-                                    state: 'location.state'
-                                }
+                            "name": {
+                              "type": "string"
                             }
+                          }
                         }
-                    },
-                    pets: {
-                        type: "array",
-                        format: "table",
-                        title: "Pets",
-                        uniqueItems: true,
-                        items: {
-                            type: "object",
-                            title: "Pet",
-                            properties: {
-                                type: {
-                                    type: "string",
-                                    enum: ["cat","dog","bird","reptile","other"],
-                                    default: "dog"
-                                },
-                                name: {
-                                    type: "string"
-                                }
-                            }
-                        },
-                        default: [
-                            {
-                                type: "dog",
-                                name: "Walter"
-                            }
-                        ]
+                      }
                     }
+                  },
+                  "default": [
+                    {
+                      "name": "New Page"
+                    }
+                  ]
                 }
+              }
             }
+
         }
 
         // Divs/textareas on the page
