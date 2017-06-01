@@ -2651,10 +2651,14 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
 
       // Edit JSON modal
       this.editjson_holder = this.theme.getModal();
+      this.editjson_holder.style.border = '1px solid rgba(0,0,0,.2)';
+      this.editjson_holder.style.borderRadius = '5px';
       this.editjson_textarea = this.theme.getTextareaInput();
-      this.editjson_textarea.style.height = '170px';
-      this.editjson_textarea.style.width = '300px';
+      this.editjson_textarea.style.height = '300px';
+      this.editjson_textarea.style.width = '500px';
       this.editjson_textarea.style.display = 'block';
+      this.editjson_textarea.style.border = 'none';
+      this.editjson_textarea.style.borderBottom = '1px solid rgba(0,0,0,.2)';
       this.editjson_save = this.getButton('Save','save','Save');
       this.editjson_save.addEventListener('click',function(e) {
         e.preventDefault();
@@ -2673,6 +2677,8 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
 
       // Manage Properties modal
       this.addproperty_holder = this.theme.getModal();
+      this.addproperty_holder.style.border = '1px solid rgba(0,0,0,.2)';
+      this.addproperty_holder.style.borderRadius = '5px';
       this.addproperty_list = document.createElement('div');
       this.addproperty_list.style.width = '295px';
       this.addproperty_list.style.maxHeight = '160px';
@@ -2680,12 +2686,15 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
       this.addproperty_list.style.overflowY = 'auto';
       this.addproperty_list.style.overflowX = 'hidden';
       this.addproperty_list.style.paddingLeft = '5px';
+      this.addproperty_list.style.borderBottom = '1px solid rgba(0,0,0,.2)';
       this.addproperty_list.setAttribute('class', 'property-selector');
       this.addproperty_add = this.getButton('add','add','add');
+      this.addproperty_add.style.margin = '5px';
       this.addproperty_input = this.theme.getFormInputField('text');
       this.addproperty_input.setAttribute('placeholder','Property name...');
       this.addproperty_input.style.width = '220px';
-      this.addproperty_input.style.marginBottom = '0';
+      this.addproperty_input.style.margin = '5px';
+      this.addproperty_input.style.padding = '6px';
       this.addproperty_input.style.display = 'inline-block';
       this.addproperty_add.addEventListener('click',function(e) {
         e.preventDefault();
@@ -3053,7 +3062,7 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
       if(!this.editors.hasOwnProperty(i)) continue;
       this.value[i] = this.editors[i].getValue();
     }
-    
+
     if(this.adding_property) this.refreshAddProperties();
   },
   refreshAddProperties: function() {
@@ -6133,8 +6142,7 @@ JSONEditor.AbstractTheme = Class.extend({
   getModal: function() {
     var el = document.createElement('div');
     el.style.backgroundColor = 'white';
-    el.style.border = '1px solid black';
-    el.style.boxShadow = '3px 3px black';
+    el.style.border = '1px solid black';    
     el.style.position = 'absolute';
     el.style.zIndex = '10';
     el.style.display = 'none';

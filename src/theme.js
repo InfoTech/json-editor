@@ -22,8 +22,7 @@ JSONEditor.AbstractTheme = Class.extend({
   getModal: function() {
     var el = document.createElement('div');
     el.style.backgroundColor = 'white';
-    el.style.border = '1px solid black';
-    el.style.boxShadow = '3px 3px black';
+    el.style.border = '1px solid black';    
     el.style.position = 'absolute';
     el.style.zIndex = '10';
     el.style.display = 'none';
