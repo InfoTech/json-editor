@@ -6,12 +6,26 @@ h1, h2, h3, h4 {
   font-family: 'Montserrat', sans-serif;
 }
 
+.jumbotron {
+  height: 190px;
+  padding-top: 35px;
+}
+
+.jumbotron h1 {
+  font-size: 48px;
+  font-weight: 700 !important;
+}
+
+.jumbotron p {
+  font-size: 14px;
+}
+
 #editor {
-  padding: 30px;
-  background: #a2a2a2;
-  background: -webkit-linear-gradient(to bottom, #a2a2a2, #FFFFFF);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #a2a2a2, #FFFFFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  border-radius: 5px;
+  background: #FFF;
+}
+
+.well {
+  background: #EEE;
 }
 
 .navbar {
@@ -79,6 +93,10 @@ h1, h2, h3, h4 {
 }
 
 label.control-label {
+  padding-top:10px;
+}
+
+label.control-label, th {
   text-transform: capitalize;
 }
 
