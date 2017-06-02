@@ -256,13 +256,13 @@
                       "data": {
                         "type": "array",
                         "format": "table",
-                        "title": "Variables",
+                        "title": "Data",
                         "uniqueItems": false,
                         "items": {
                           "type": "object",
                           "title": "Variable",
                           "properties": {
-                            "Type": {
+                            "type": {
                               "type": "string",
                               "enum": [
                                 "Calculation",
@@ -270,7 +270,7 @@
                               ],
                               "default": "Calculation"
                             },
-                            "Data": {
+                            "name": {
                               "type": "string"
                             }
                           }
@@ -378,7 +378,15 @@
             theme = theme || '';
 
             var mapping = {
+                barebones: '',
+                html: '',
+                bootstrap2: '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css',
                 bootstrap3: '//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css',
+                foundation3: '//cdnjs.cloudflare.com/ajax/libs/foundation/3.2.5/stylesheets/foundation.css',
+                foundation4: '//cdn.jsdelivr.net/foundation/4.3.2/css/foundation.min.css',
+                foundation5: '//cdn.jsdelivr.net/foundation/5.0.2/css/foundation.min.css',
+                foundation6: '//cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css',
+                jqueryui: '//code.jquery.com/ui/1.10.3/themes/south-street/jquery-ui.css'
             };
 
             if(typeof mapping[theme] === 'undefined') {
@@ -399,7 +407,10 @@
         var setIconlib = function(iconlib,no_reload) {
             iconlib = iconlib || '';
             var mapping = {
-                fontawesome4: '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+                foundation2: '//cdnjs.cloudflare.com/ajax/libs/foundicons/2.0/stylesheets/general_foundicons.css',
+                foundation3: '//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css',
+                fontawesome3: '//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.css',
+                fontawesome4: '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'
             };
 
             JSONEditor.defaults.options.iconlib = iconlib;
