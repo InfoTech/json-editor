@@ -3,7 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <title>JSON Editor Example</title>
-
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+      crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,500,600,700,900|Roboto:300,400,900" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700,900|Exo:300,400,700,800,900' rel='stylesheet' type='text/css'>
     <link href="//fonts.googleapis.com/css?family=Exo" rel="stylesheet" type="text/css" />
@@ -218,28 +221,53 @@
             }
         }
 
+        function convertToSlug(string){
+            return string
+                .toLowerCase()
+                .replace(/ /g,'-')
+                .replace(/[^\w-]+/g,'');
+        }
+
+        // {
+        // 	"metadata": {
+        // 		"title": "Vendor Scorecard",
+        // 		"sub_title": null,
+        // 		"last_updated": null
+        // 	},
+        // 	"pages": [
+        // 		{
+        // 			"slug": "cover-page"
+        // 		},
         // Default starting schema
+
         if(!schema) {
             schema = {
               "title": "Report",
               "type": "object",
               "properties": {
-                "title": {
-                  "type": "string",
-                  "description": "Name of the report",
-                  "minLength": 4,
-                  "default": "New Info-Tech Report"
-                },
-                "slug": {
-                  "type": "string",
-                  "minLength": 4,
-                  "default": "new_info_tech_report"
-                },
-                "description": {
-                  "type": "string",
-                  "description": "Description of the report",
-                  "minLength": 4,
-                  "default": "AMAZING NEW PRODUCT!"
+                "metadata": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "description": "Name of the report",
+                      "minLength": 4,
+                      "default": "New Info-Tech Report"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "minLength": 4,
+                      "default": "new-info-tech-report"
+                      // "minLength": 4,
+                      // "default": "new-info-tech-report"
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Description of the report",
+                      "minLength": 4,
+                      "default": "AMAZING NEW PRODUCT!"
+                    },
+                  }
                 },
                 "pages": {
                   "type": "array",
@@ -251,6 +279,9 @@
                     "title": "Page",
                     "properties": {
                       "name": {
+                        "type": "string"
+                      },
+                      "slug": {
                         "type": "string"
                       },
                       "data": {
