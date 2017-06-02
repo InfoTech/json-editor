@@ -6,12 +6,20 @@ h1, h2, h3, h4 {
   font-family: 'Montserrat', sans-serif;
 }
 
+input {
+  padding: 2px 5px;
+}
+
 #editor {
-  padding: 30px;
+  padding: 5px 30px;
   background: #a2a2a2;
   background: -webkit-linear-gradient(to bottom, #a2a2a2, #FFFFFF);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom, #a2a2a2, #FFFFFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border-radius: 5px;
+}
+
+#editor-code .btn {
+  float: right;
 }
 
 .navbar {
